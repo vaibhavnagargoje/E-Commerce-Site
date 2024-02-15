@@ -51,6 +51,10 @@
                         <div class="card-text">
                            $ {{product.price}}
                         </div>
+
+                        <a href="/{{ product.id }}"  class="btn btn-success">View</a >
+                        <a  class="btn btn-warning">Contact</a >
+
                     </div>
                 </div>
             </div>
@@ -60,30 +64,6 @@
 
         <div class="row">
             <div class="col-md-3 offset-md-4">
-                <!-- <ul class="pagination">
-                    {% if product_objects.has_previous %}
-                        <li class="page-item active">
-                            <a class="page-link" href="?page={{ product_objects.previous_page_number }}">Previousjvjhh</a>
-                        </li>
-                    {% endif %}
-
-                        <li class="page-item current">
-
-                            <a class="page-link" href="?page={{ product_objects.number}}"></a>
-
-                        </li>
-
-                    {% if product_objects.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ product_objects.next_pages_number }}"> previous </a>
-                    </li>
-                    {% endif %}
-                </ul> -->
-
-
-
-                
-
                 <ul class="pagination">
                     {% if product_objects.has_previous %}
                     <li class="page-item">
