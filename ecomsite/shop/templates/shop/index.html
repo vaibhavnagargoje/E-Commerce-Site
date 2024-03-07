@@ -13,7 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{% static 'shop/style.css'%}">
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="{% static 'shop/style.css'%}">
 
     <title>Document</title>
 </head>
@@ -53,7 +58,7 @@
                         </div>
 
                         <a href="/{{product.id}}"  class="btn btn-success">View</a >
-                        <a  class="btn btn-warning">Contact</a >
+                        <button id="{{product.id}}"  class="atc btn btn-warning">Add to Cart</button >
 
                     </div>
                 </div>
@@ -91,11 +96,44 @@
     </div>
 </body>
 
+<script type="text/javascript">
+console.log("hello world ! ")
+if(localStorage.getItem('cart')==null){
+    var cart={};
+}
+else{
+    cart=localStorage.getItem('cart');
+    cart=JSON.parse(cart);
+}
+
+$(document).on('click','.atc',function(){
+    console.log('the add to card button is clicked .. ');
+    // get the id of the product
+    var item_id = this.id.toString();
+    console.log(item_id);
+
+    if(cart[item_id]!=undefined){
+        cart[item_id]=cart[item_id]+1
+
+    }
+    else {
+        cart[item_id]=1;
+    }
+    console.log(cart);
+    localStorage.setItem('cart',JSON.stringify(cart));
+    
+})
+</script>
+
+
+
+
+
 </html>
 
 
 
-{% for product in products %}
+<!-- {% for product in products %}
 
 {{ product.title}}
-{% endfor %}
+{% endfor %} -->
